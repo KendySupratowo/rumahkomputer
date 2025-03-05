@@ -45,4 +45,7 @@ tailwind.config = {
     }
   }
 
+  document.getElementById('buatAkun').addEventListener('click', ()=>{
+    window.location.href = 'login.html';
+  })
   

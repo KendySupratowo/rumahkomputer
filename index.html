@@ -7,6 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rumah Komputer</title>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style>
+        #categoryList {
+            z-index: 20;
+            /* Pastikan daftar kategori muncul di atas elemen lain */
+        }
+    </style>
 </head>
 
 <body>
@@ -19,24 +25,36 @@
     <!-- navbar -->
     <nav class="bg-indigo-600">
         <div class="container flex">
-            <!-- all category -->
-             <div class="px-8 py-4 bg-primary flex items-center cursor-pointer">
+            <div class="px-8 py-4 bg-primary flex items-center cursor-pointer relative" id="allCategoriesButton">
                 <span class="text-white">
                     <i class="fas fa-bars"></i>
                 </span>
                 <span class="capitalize ml-2 text-white">All categories</span>
-             </div>
-            <!-- all category end -->
-            <!-- navbar links -->
-             <div class="flex items-center justify-between flex-grow pl-12">
+                <ul id="categoryList"
+                    class="absolute left-0 mt-2 bg-white border border-gray-200 rounded-md shadow-lg hidden">
+                    <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Layar</a></li>
+                    <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Processor</a></li>
+                    <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Motherboard</a></li>
+                    <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">RAM</a></li>
+                    <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Penyimpanan</a></li>
+                    <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Casing</a></li>
+                    <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Power Supply</a></li>
+                </ul>
+            </div>
+            <div class="flex items-center justify-between flex-grow pl-12">
                 <div class="flex items-center space-x-6 capitalize">
                     <a href="#" class="text-gray-200 hover:text-white transition">Home</a>
-                    <a href="#" class="text-gray-200 hover:text-white transition">Shop</a>
-                    <a href="#" class="text-gray-200 hover:text-white transition">Contact Us</a>
+                    <a href="shop.html" class="text-gray-200 hover:text-white transition">Shop</a>
+                    <a href="contactUs.html" class="text-gray-200 hover:text-white transition">Contact Us</a>
+                    <div class="flex items-center space-x-6">
+                        <a href="login21.html" class="text-gray-200 hover:text-white transition">Login/Register</a>
+                        <a href="cart.html" class="text-gray-200 hover:text-white transition relative">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cartCount"
+                                class="absolute top-[-10px] right-[-10px] bg-red-500 text-white rounded-full px-2 text-xs hidden">0</span>
+                        </a>
+                    </div>
                 </div>
-                <a href="" class="text-gray-200 hover:text-white transition">Login/Register</a>
-             </div>
-        </div>
     </nav>
     <br>
     <main>
@@ -141,7 +159,9 @@
         </div>
 
     </main>
-
+    <script src="main.js"></script>
+    <script src="register.js"></script>
+    <script src="login21.js"></script>
 </body>
 
 </html>
