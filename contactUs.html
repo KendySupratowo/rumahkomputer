@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Rumah Komputer</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" href="https://w7.pngwing.com/pngs/182/254/png-transparent-initial-and-letter-rk-logo.png">
+</head>
+
+<body>
+    <nav class="bg-indigo-600">
+        <div class="container flex">
+            <div class="px-8 py-4 bg-primary flex items-center cursor-pointer relative" id="allCategoriesButton">
+                <span class="text-white">
+                    <i class="fas fa-bars"></i>
+                </span>
+                <span class="capitalize ml-2 text-white">All categories</span>
+                <ul id="categoryList"
+                    class="absolute left-0 mt-2 bg-white border border-gray-200 rounded-md shadow-lg hidden">
+                    <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Layar</a></li>
+                    <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Processor</a></li>
+                    <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Motherboard</a></li>
+                    <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Penyimpanan</a></li>
+                    <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Casing</a></li>
+                    <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Power Supply</a></li>
+                </ul>
+            </div>
+            <div class="flex items-center justify-between flex-grow pl-12">
+                <div class="flex items-center space-x-6 capitalize">
+                    <a href="index.html" class="text-gray-200 hover:text-white transition">Home</a>
+                    <a href="shop.html" class="text-gray-200 hover:text-white transition">Shop</a>
+                    <a href="contactUs.html" class="text-gray-200 hover:text-white transition">Contact Us</a>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="login.html" class="text-gray-200 hover:text-white transition">Login/Register</a>
+                    <a href="cart.html" class="text-gray-200 hover:text-white transition relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cartCount" class="absolute top-[-10px] right-[-10px] bg-red-500 text-white rounded-full px-2 text-xs hidden">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto py-8">
+        <h1 class="text-3xl font-bold mb-6">Contact Us</h1>
+        <form class="max-w-md mx-auto">
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+                <input type="text" id="name" class="border rounded-md w-full py-2 px-3">
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                <input type="email" id="email" class="border rounded-md w-full py-2 px-3">
+            </div>
+            <div class="mb-4">
+                <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message</label>
+                <textarea id="message" class="border rounded-md w-full py-2 px-3"></textarea>
+            </div>
+            <button type="submit" class="bg-indigo-600 text-white py-2 px-4 rounded-md">Send Message</button>
+        </form>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -62,7 +62,7 @@ tailwind.config = {
       }
       if (email === user.email && password === user.password) {
           localStorage.setItem("isLoggedIn", "true");
-          document.location.href = "dashboard.html";
+          document.location.href = "index.html";
       } else {
           alert("Email atau password salah!");
       }
