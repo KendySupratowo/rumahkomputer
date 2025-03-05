@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
       newestPcDesc.textContent = 'Temukan PC impianmu dengan performa tinggi dan harga terjangkau. Kami menyediakan berbagai pilihan untuk kebutuhan gaming, desain, dan pekerjaanmu.';
     }
     if (keranjangButton) {
-      keranjangButton.textContent = 'Tambah ke Keranjang';
+      keranjangButton.textContent = 'Add to Cart';
     }
   
     // Contoh manipulasi atribut
