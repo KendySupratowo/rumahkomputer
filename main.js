@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const categoryList = document.getElementById('categoryList');
   const navLinks = document.querySelectorAll('.bg-indigo-600 nav a');
   const newestPcTitle = document.querySelector('main h2');
-  const newestPcDesc = document.querySelector('main p');
   const keranjangButton = document.querySelector('main a.inline-block');
   const productImages = document.querySelectorAll('main .grid img');
   const addToCartButtons = document.querySelectorAll('.addToCartButton');
@@ -140,20 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
           updateCartCount();
       });
   });
-
-  // Event listener untuk tombol kategori
-  if (allCategoriesButton && categoryList) {
-      allCategoriesButton.addEventListener('click', function () {
-          categoryList.classList.toggle('hidden');
-      });
-
-      document.addEventListener('click', function (event) {
-          if (!allCategoriesButton.contains(event.target)) {
-              categoryList.classList.add('hidden');
-          }
-      });
-  }
-
+  
   // Panggil updateCartCount saat halaman dimuat
   updateCartCount();
 });
