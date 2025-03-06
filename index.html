@@ -7,9 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rumah Komputer</title>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         .hidden {
             display: none;
+        }
+
+        @media (max-width: 768px) {
+            .grid-cols-3 {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
         }
     </style>
 </head>
@@ -26,12 +33,17 @@
     <nav class="bg-indigo-600">
         <div class="container flex items-center justify-between py-4 px-8">
             <div class="flex items-center space-x-6 capitalize">
-                <a href="#" class="text-gray-200 hover:text-white transition">Home</a>
-                <a href="shop.html" class="text-gray-200 hover:text-white transition">Cart</a>
+                <a href="index.html" class="text-gray-200 hover:text-white transition">Home</a>
+                <a href="shop.html" class="text-gray-200 hover:text-white transition relative">
+                    <i class="fas fa-shopping-cart mr-1"></i>Cart
+                    <span id="cartCount"
+                        class="absolute top-[-10px] right-[-10px] bg-red-500 text-white rounded-full px-2 text-xs hidden transition-transform duration-300 scale-0 origin-center">0</span>
+                </a>
                 <a href="contactUs.html" class="text-gray-200 hover:text-white transition">Contact Us</a>
             </div>
             <div class="flex items-center space-x-6 ml-auto">
-                <a href="login21.html" class="text-gray-200 hover:text-white transition" id="loginRegisterLink">Login/Register</a>
+                <a href="login21.html" class="text-gray-200 hover:text-white transition"
+                    id="loginRegisterLink">Login/Register</a>
                 <span id="usernameDisplay" class="text-white font-medium hidden"></span>
                 <button id="logoutButton" class="text-gray-200 hover:text-white transition hidden">Logout</button>
             </div>
@@ -57,146 +69,131 @@
                 <div class="bg-black/50 p-8 md:p-12 lg:px-16 lg:py-24">
                     <div class="text-center ltr:sm:text-left rtl:sm:text-right">
                         <h2 class="text-2xl font-bold text-white sm:text-3xl md:text-5xl">Newest PC</h2>
-
-                        <p class="hidden max-w-lg text-white/90 md:mt-6 md:block md:text-lg md:leading-relaxed">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore officia corporis quasi
-                            doloribus iure architecto quae voluptatum beatae excepturi dolores.
-                        </p>
-
-                        <div class="mt-4 sm:mt-8">
-                            <a href="#"
-                                class="inline-block rounded-full bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:ring-3 focus:ring-yellow-400 focus:outline-hidden">
-                                MASUKKAN KERANJANG
-                            </a>
-                        </div>
                     </div>
                 </div>
             </section>
-            <img width="700px" src="" alt="">
         </div>
         <div class="container grid grid-cols-3 gap-3 mx-auto py-8">
             <a href="#" class="group block">
                 <img class="" src="1.jpg" alt="" class="aspect-square w-full rounded-sm object-cover" />
-
                 <div class="mt-3">
                     <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">
-                        Laptop Gaming Super Cepat
+                        Lenovo Legion Pro 5 16 16IRX9 i7-14650HX RTX4060 16GB 1TB 
                     </h3>
                     <ul class="container flex">
                         <pre>Qty </pre>
-                        <li class="qty">10</li>
+                        <li class="qty" id="qty-1">10</li> <!-- Tambahkan ID unik -->
                     </ul>
                     <p class="mt-1 text-sm text-gray-700">Rp.15.000.000</p>
                     <button class="addToCartButton mt-4 bg-indigo-600 text-white py-2 px-4 rounded-md"
                         data-product-id="1" 
-                        data-product-name="Laptop Gaming Super Cepat" 
+                        data-product-name="Lenovo Legion Pro 5 16 16IRX9 i7-14650HX RTX4060 16GB 1TB " 
                         data-product-price="15000000"
                         data-product-image="1.jpg">
-                        Add to Cart</button>
+                        Add to Cart
+                    </button>
                 </div>
             </a>
             <a href="#" class="group block">
-                <img class="" src="2.jfif" alt="" class="aspect-square w-full rounded-sm object-cover" />
-
+                <img class="" src="2.jpg" alt="" class="aspect-square w-full rounded-sm object-cover" />
                 <div class="mt-3">
                     <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">
-                        Monitor Lengkung 4K
+                        Monitor 34” Samsung Odyssey OLED G8
                     </h3>
                     <ul class="container flex">
                         <pre>Qty </pre>
-                        <li class="qty">10</li>
+                        <li class="qty" id="qty-2">10</li>
                     </ul>
                     <p class="mt-1 text-sm text-gray-700">Rp.5.000.000</p>
                     <button class="addToCartButton mt-4 bg-indigo-600 text-white py-2 px-4 rounded-md"
                         data-product-id="2" 
-                        data-product-name="Monitor Lengkung 4K" 
+                        data-product-name="Monitor 34” Samsung Odyssey OLED G8" 
                         data-product-price="5000000"
-                        data-product-image="2.jfif">
-                        Add to Cart</button>
+                        data-product-image="2.jpg">
+                        Add to Cart
+                    </button>
                 </div>
             </a>
             <a href="#" class="group block">
-                <img class="" src="3.png" alt="" class="aspect-square w-full rounded-sm object-cover" />
-
+                <img class="" src="3.jpg" alt="" class="aspect-square w-full rounded-sm object-cover" />
                 <div class="mt-3">
                     <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">
-                        Keyboard Mekanik RGB
+                        Rexus Legionare MX5.1 TKL Mechanical Gaming Keyboard
                     </h3>
                     <ul class="container flex">
                         <pre>Qty </pre>
-                        <li class="qty">10</li>
+                        <li class="qty" id="qty-3">10</li>
                     </ul>
                     <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
                     <button class="addToCartButton mt-4 bg-indigo-600 text-white py-2 px-4 rounded-md"
-                    data-product-id="3" 
-                    data-product-name="Keyboard Mekanik RGB" 
-                    data-product-price="1500000"
-                    data-product-image="3.png">
-                    Add to Cart</button>
+                        data-product-id="3" 
+                        data-product-name="Rexus Legionare MX5.1 TKL Mechanical Gaming Keyboard" 
+                        data-product-price="1500000"
+                        data-product-image="3.jpg">
+                        Add to Cart
+                    </button>
                 </div>
             </a>
             <a href="#" class="group block">
-                <img src="5.jpeg" alt="" class="aspect-square w-full rounded-sm object-cover" />
-
+                <img class="" src="5.jpeg" alt="" class="aspect-square w-full rounded-sm object-cover" />
                 <div class="mt-3">
                     <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">
-                        Mouse Gaming Presisi Tinggi
+                        Mouse Logitech G502 X LightSpeed Gaming
                     </h3>
                     <ul class="container flex">
                         <pre>Qty </pre>
-                        <li class="qty">10</li>
+                        <li class="qty" id="qty-4">10</li> <!-- Tambahkan ID unik -->
                     </ul>
                     <p class="mt-1 text-sm text-gray-700">Rp.800.000</p>
                     <button class="addToCartButton mt-4 bg-indigo-600 text-white py-2 px-4 rounded-md"
-                    data-product-id="4" 
-                    data-product-name="Mouse Gaming Presisi Tinggi" 
-                    data-product-price="800000"
-                    data-product-image="5.jpeg">
-                    Add to Cart</button>
+                        data-product-id="4" 
+                        data-product-name="Mouse Logitech G502 X LightSpeed Gaming" 
+                        data-product-price="800000"
+                        data-product-image="5.jpeg">
+                        Add to Cart
+                    </button>
                 </div>
             </a>
             <a href="#" class="group block">
-                <img src="4.jpg" alt="" class="aspect-square w-full rounded-sm object-cover" />
-
+                <img class="" src="4.jpg" alt="" class="aspect-square w-full rounded-sm object-cover" />
                 <div class="mt-3">
                     <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">
-                        Headset Gaming Surround
+                        EDIFIER W800BT PRO Hi-Res Audio ANC Headphone
                     </h3>
                     <ul class="container flex">
                         <pre>Qty </pre>
-                        <li class="qty">10</li>
+                        <li class="qty" id="qty-5">10</li>
                     </ul>
                     <p class="mt-1 text-sm text-gray-700">Rp.1.200.000</p>
                     <button class="addToCartButton mt-4 bg-indigo-600 text-white py-2 px-4 rounded-md"
-                    data-product-id="5" 
-                    data-product-name="Headset Gaming Surround" 
-                    data-product-price="1200000"
-                    data-product-image="4.jpg">
-                    Add to Cart</button>
+                        data-product-id="5" 
+                        data-product-name="EDIFIER W800BT PRO Hi-Res Audio ANC Headphone" 
+                        data-product-price="1200000"
+                        data-product-image="4.jpg">
+                        Add to Cart
+                    </button>
                 </div>
             </a>
             <a href="#" class="group block">
-                <img src="6.jpg" alt="" class="aspect-square w-full rounded-sm object-cover" />
-
+                <img class="" src="6.jpg" alt="" class="aspect-square w-full rounded-sm object-cover" />
                 <div class="mt-3">
                     <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">
-                        SSD NVMe 1TB
+                        SSD Samsung 990 Pro 1TB
                     </h3>
                     <ul class="container flex">
                         <pre>Qty </pre>
-                        <li class="qty">10</li>
+                        <li class="qty" id="qty-6">10</li>
                     </ul>
                     <p class="mt-1 text-sm text-gray-700">Rp.1.000.000</p>
                     <button class="addToCartButton mt-4 bg-indigo-600 text-white py-2 px-4 rounded-md"
-                    data-product-id="6" 
-                    data-product-name="SSD NVMe 1TB" 
-                    data-product-price="1000000"
-                    data-product-image="6.jpg">
-                    Add to Cart</button>
+                        data-product-id="6" 
+                        data-product-name="SSD Samsung 990 Pro 1TB" 
+                        data-product-price="1000000"
+                        data-product-image="6.jpg">
+                        Add to Cart
+                    </button>
                 </div>
             </a>
-
-
         </div>
 
     </main>

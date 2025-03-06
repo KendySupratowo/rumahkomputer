@@ -15,6 +15,21 @@ document.addEventListener('DOMContentLoaded', function () {
   const loginRegisterLink = document.getElementById('loginRegisterLink');
   const logoutButton = document.getElementById('logoutButton');
   const usernameDisplay = document.getElementById('usernameDisplay');
+  const cartCount = document.getElementById('cartCount');
+
+  // Fungsi untuk memperbarui jumlah item di cart
+  function updateCartCount() {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      if (totalItems > 0) {
+          cartCount.textContent = totalItems;
+          cartCount.classList.remove('hidden');
+          cartCount.classList.remove('scale-0');
+      } else {
+          cartCount.classList.add('scale-0');
+          setTimeout(() => cartCount.classList.add('hidden'), 300);
+      }
+  }
 
   // Login/Logout logic dan tampilkan username
   if (username) {
@@ -32,18 +47,17 @@ document.addEventListener('DOMContentLoaded', function () {
   // Promo Modal logic
   if (promoLink && promoModal) {
       promoLink.addEventListener('click', function (e) {
-          e.preventDefault(); // Mencegah link melakukan navigasi
-          promoModal.classList.remove('hidden'); // Tampilkan modal
+          e.preventDefault();
+          promoModal.classList.remove('hidden');
       });
   }
 
   if (closePromo && promoModal) {
       closePromo.addEventListener('click', function () {
-          promoModal.classList.add('hidden'); // Sembunyikan modal
+          promoModal.classList.add('hidden');
       });
   }
 
-  // Klik di luar modal untuk menutup
   if (promoModal) {
       promoModal.addEventListener('click', function (e) {
           if (e.target === promoModal) {
@@ -55,8 +69,6 @@ document.addEventListener('DOMContentLoaded', function () {
   // Manipulasi teks
   if (promoLink) promoLink.textContent = 'Lihat Promo Spesial!';
   if (newestPcTitle) newestPcTitle.textContent = 'PC Terbaru dan Terbaik!';
-  if (newestPcDesc) newestPcDesc.textContent = 'Temukan PC impianmu dengan performa tinggi dan harga terjangkau. Kami menyediakan berbagai pilihan untuk kebutuhan gaming, desain, dan pekerjaanmu.';
-  if (keranjangButton) keranjangButton.textContent = 'Add to Cart';
 
   // Manipulasi atribut gambar
   if (productImages) {
@@ -82,15 +94,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Add to Cart logic
   addToCartButtons.forEach(button => {
-      button.addEventListener('click', function () {
+      button.addEventListener('click', function (event) {
+          event.preventDefault(); // Cegah perilaku default dari <a href="#">
+
           const productId = this.getAttribute('data-product-id');
           const productName = this.getAttribute('data-product-name');
           const productPrice = this.getAttribute('data-product-price');
           const productImage = this.getAttribute('data-product-image');
+          const qtyElement = document.getElementById(`qty-${productId}`);
+          let currentQty = parseInt(qtyElement.textContent);
+
+          if (currentQty <= 0) {
+              alert('Stok habis!');
+              return;
+          }
 
           let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
           const existingItem = cart.find(item => item.id === productId);
+
           if (existingItem) {
               existingItem.quantity += 1;
           } else {
@@ -103,8 +124,20 @@ document.addEventListener('DOMContentLoaded', function () {
               });
           }
 
+          // Kurangi stok di halaman
+          currentQty -= 1;
+          qtyElement.textContent = currentQty;
+
+          // Nonaktifkan tombol jika stok habis
+          if (currentQty === 0) {
+              button.disabled = true;
+              button.textContent = 'Stok Habis';
+              button.classList.remove('bg-indigo-600');
+              button.classList.add('bg-gray-400', 'cursor-not-allowed');
+          }
+
           localStorage.setItem('cart', JSON.stringify(cart));
-          window.location.href = 'shop.html';
+          updateCartCount();
       });
   });
 
@@ -120,4 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
           }
       });
   }
+
+  // Panggil updateCartCount saat halaman dimuat
+  updateCartCount();
 });
