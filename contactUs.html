@@ -12,35 +12,19 @@
 
 <body>
     <nav class="bg-indigo-600">
-        <div class="container flex">
-            <div class="px-8 py-4 bg-primary flex items-center cursor-pointer relative" id="allCategoriesButton">
-                <span class="text-white">
-                    <!-- <i class="fas fa-bars"></i> -->
-                </span>
-                <!-- <span class="capitalize ml-2 text-white">All categories</span>
-                <ul id="categoryList"
-                    class="absolute left-0 mt-2 bg-white border border-gray-200 rounded-md shadow-lg hidden">
-                    <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Layar</a></li>
-                    <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Processor</a></li>
-                    <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Motherboard</a></li>
-                    <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Penyimpanan</a></li>
-                    <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Casing</a></li>
-                    <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Power Supply</a></li>
-                </ul> -->
+        <div class="container flex items-center justify-between py-4 px-8">
+            <div class="flex items-center space-x-6 capitalize">
+                <a href="index.html" class="text-gray-200 hover:text-white transition">Home</a>
+                <a href="shop.html" class="text-gray-200 hover:text-white transition relative">
+                    <i class="fas fa-shopping-cart mr-1"></i>Cart
+                    <span id="cartCount" class="absolute top-[-10px] right-[-10px] bg-red-500 text-white rounded-full px-2 text-xs hidden transition-transform duration-300 scale-0 origin-center">0</span>
+                </a>
+                <a href="contactUs.html" class="text-gray-200 hover:text-white transition">Contact Us</a>
             </div>
-            <div class="flex items-center justify-between flex-grow">
-                <div class="flex items-center space-x-6 capitalize">
-                    <a href="index.html" class="text-gray-200 hover:text-white transition">Home</a>
-                    <a href="shop.html" class="text-gray-200 hover:text-white transition">Cart</a>
-                    <a href="contactUs.html" class="text-gray-200 hover:text-white transition">Contact Us</a>
-                </div>
-                <div class="flex items-center space-x-6">
-                    <!-- <a href="login.html" class="text-gray-200 hover:text-white transition">Login/Register</a> -->
-                    <a href="cart.html" class="text-gray-200 hover:text-white transition relative">
-                        <!-- <i class="fas fa-shopping-cart"></i> -->
-                        <span id="cartCount" class="absolute top-[-10px] right-[-10px] bg-red-500 text-white rounded-full px-2 text-xs hidden">0</span>
-                    </a>
-                </div>
+            <div class="flex items-center space-x-6 ml-auto">
+                <a href="login21.html" class="text-gray-200 hover:text-white transition" id="loginRegisterLink">Login/Register</a>
+                <span id="usernameDisplay" class="text-white font-medium hidden"></span>
+                <button id="logoutButton" class="text-gray-200 hover:text-white transition hidden">Logout</button>
             </div>
         </div>
     </nav>

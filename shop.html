@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,28 +7,27 @@
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="icon" href="https://w7.pngwing.com/pngs/182/254/png-transparent-initial-and-letter-rk-logo.png">
+    <style>
+        .hidden { display: none; }
+    </style>
 </head>
-
 <body>
     <nav class="bg-indigo-600">
-        <div class="container flex">
-            <div class="px-8 py-4 bg-primary flex items-center cursor-pointer relative" id="allCategoriesButton">
-                <div class="flex items-center justify-between flex-grow">
-                    <div class="flex items-center space-x-6 capitalize">
-                        <a href="index.html" class="text-gray-200 hover:text-white transition">Home</a>
-                        <a href="shop.html" class="text-gray-200 hover:text-white transition">Cart</a>
-                        <a href="contactUs.html" class="text-gray-200 hover:text-white transition">Contact Us</a>
-                    </div>
-                    <div class="flex items-center space-x-6">
-                        <!-- <a href="login.html" class="text-gray-200 hover:text-white transition">Login/Register</a> -->
-                        <a href="cart.html" class="text-gray-200 hover:text-white transition relative">
-                            <!-- <i class="fas fa-shopping-cart"></i> -->
-                            <span id="cartCount"
-                                class="absolute top-[-10px] right-[-10px] bg-red-500 text-white rounded-full px-2 text-xs hidden">0</span>
-                        </a>
-                    </div>
-                </div>
+        <div class="container flex items-center justify-between py-4 px-8">
+            <div class="flex items-center space-x-6 capitalize">
+                <a href="index.html" class="text-gray-200 hover:text-white transition">Home</a>
+                <a href="shop.html" class="text-gray-200 hover:text-white transition relative">
+                    <i class="fas fa-shopping-cart mr-1"></i>Cart
+                    <span id="cartCount" class="absolute top-[-10px] right-[-10px] bg-red-500 text-white rounded-full px-2 text-xs hidden transition-transform duration-300 scale-0 origin-center">0</span>
+                </a>
+                <a href="contactUs.html" class="text-gray-200 hover:text-white transition">Contact Us</a>
             </div>
+            <div class="flex items-center space-x-6 ml-auto">
+                <a href="login21.html" class="text-gray-200 hover:text-white transition" id="loginRegisterLink">Login/Register</a>
+                <span id="usernameDisplay" class="text-white font-medium hidden"></span>
+                <button id="logoutButton" class="text-gray-200 hover:text-white transition hidden">Logout</button>
+            </div>
+        </div>
     </nav>
 
     <main class="container mx-auto py-8">
@@ -38,7 +36,6 @@
             <div id="cartItems"></div>
         </div>
 
-        <!-- Total Payment dengan default hidden -->
         <div id="totalPaymentContainer" class="hidden">
             <h1 class="text-3xl font-bold mb-6">Total Payment</h1>
             <ul class="container flex">
@@ -48,17 +45,39 @@
         </div>
         <br><br>
 
-        <!-- Form dan elemen lainnya tetap sama -->
         <form class="max-w-md">
-            <!-- ... Form input ... -->
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+                <input type="text" id="name" class="border rounded-md w-full py-2 px-3">
+            </div>
+            <div class="mb-4">
+                <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">No. Telepon</label>
+                <input type="text" id="phone" class="border rounded-md w-full py-2 px-3">
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                <input type="email" id="email" class="border rounded-md w-full py-2 px-3">
+            </div>
+            <div class="mb-4">
+                <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Address</label>
+                <textarea id="message" class="border rounded-md w-full py-2 px-3"></textarea>
+            </div>
         </form>
-        <h2 class="text-3xl font-bold mb-6">Scan Barcode Here</h2>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg">
+
+        <h2 class="text-3xl font-bold mb-6">Scan QRIS Here</h2>
+        <img id="qrisImage" src="qris.svg" alt="QRIS Dummy" class="hidden mx-auto">
         <br>
-        <button class="bg-indigo-600 text-white py-2 px-4 rounded-md">Done Payment</button>
+        <button id="donePayment" class="bg-indigo-600 text-white py-2 px-4 rounded-md">Done Payment</button>
+
+        <!-- Popup untuk pesan terimakasih -->
+        <div id="paymentPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+            <div class="bg-white p-6 rounded-md max-w-md w-full text-center">
+                <h2 class="text-xl font-bold mb-4">Terimakasih telah membayar!</h2>
+                <p class="text-gray-700 mb-4">Silahkan berbelanja lagi.</p>
+                <a href="index.html" class="bg-indigo-600 text-white py-2 px-4 rounded-md">Kembali Berbelanja</a>
+            </div>
+        </div>
     </main>
-    <script src="script.js"></script>
     <script src="shop.js"></script>
 </body>
-
 </html>
